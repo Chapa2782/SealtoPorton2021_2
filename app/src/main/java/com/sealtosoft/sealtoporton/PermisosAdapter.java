@@ -1,11 +1,13 @@
 package com.sealtosoft.sealtoporton;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -23,7 +25,9 @@ import java.util.List;
 
 public class PermisosAdapter extends ArrayAdapter<Permisos> {
     FirebaseDatabase database;
-    DatabaseReference ref;
+    DatabaseReference ref,ref2;
+    SharedPreferences sharedPreferences;
+
 
     String ID;
     public PermisosAdapter(Context context, List<Permisos> objects){
@@ -44,36 +48,42 @@ public class PermisosAdapter extends ArrayAdapter<Permisos> {
                     false);
         }
         database = FirebaseDatabase.getInstance();
+        sharedPreferences = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        final String DIS = sharedPreferences.getString("Dispositivo","NULL");
 
-        // Referencias UI.
         TextView id = convertView.findViewById(R.id.nombrePermiso);
         final Switch estado = convertView.findViewById(R.id.swEstado);
+        final Button btnEliminar = convertView.findViewById(R.id.btnEliminar);
 
-        // Lead actual.
         final Permisos permisos = getItem(position);
-
-        // Setup.
-        id.setText(permisos.ID);
-        estado.setChecked(permisos.habilitado);
+        id.setText(permisos.getID());
+        estado.setChecked(permisos.getHabilitado());
         ID = id.getText().toString();
         estado.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //TODO: Hacer que cambie el estado en la base de datos
-                ref = database.getReference("Permisos/" + ID + "/habilitado");
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Log.d("Mensaje/swChanged",snapshot.getValue().toString());
-                    }
+                //Cambia el estado del permiso
+                ref = database.getReference("Permisos/" + permisos.getID() + "/habilitado");
+                ref.setValue(isChecked);
+            }
+        });
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                estado.setOnCheckedChangeListener(null);
+                ref = database.getReference("Permisos/" + permisos.getID());
+                ref.removeValue();
+                String path = "Dispositivos/" + DIS + "/Permisos/" + permisos.getID();
 
-                    @Override
-                    public void onCancelled(@NonNull  DatabaseError error) {
+                ref2 = database.getReference(path);
+                ref2.removeValue();
+                Permisos.postition = position;
 
-                    }
-                });
+
+
             }
         });
         return convertView;
     }
+
 }

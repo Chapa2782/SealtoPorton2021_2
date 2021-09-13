@@ -3,6 +3,10 @@ package com.sealtosoft.sealtoporton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,7 +45,7 @@ public class ComandoPropietario extends AppCompatActivity {
 
 
         Dispositivo = sharedPreferences.getString("Dispositivo","NULL");
-        Log.d("Mensaje",Dispositivo);
+
         Dispositivo = "Dispositivos/" + Dispositivo;
 
         database = FirebaseDatabase.getInstance();
@@ -54,10 +58,10 @@ public class ComandoPropietario extends AppCompatActivity {
         btnCambiarModo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnCambiarModo.getText().toString() == "Cambiar a Abierto"){
+                if(btnCambiarModo.getText().toString() == getString(R.string.CambiarAbierto)){
                     refEstado.setValue(2);
                 }
-                if(btnCambiarModo.getText().toString() == "Cambiar a Cerrado"){
+                if(btnCambiarModo.getText().toString() == getString(R.string.CambiarCerrado)){
                     refEstado.setValue(0);
                 }
 
@@ -68,11 +72,13 @@ public class ComandoPropietario extends AppCompatActivity {
         btnComando.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnComando.getText().toString() == "ABRIR"){
+                if(btnComando.getText().toString() == getString(R.string.ABRIR)){
                     ref.setValue(1);
+
                 }
-                if(btnComando.getText().toString() == "CERRAR"){
+                if(btnComando.getText().toString() == getString(R.string.CERRAR)){
                     ref.setValue(2);
+
                 }
             }
         });
@@ -81,15 +87,35 @@ public class ComandoPropietario extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 try {
-                    Log.d("Mensaje", snapshot.getValue().toString());
+
                     Integer estado = Integer.valueOf(snapshot.getValue().toString());
                     if(estado == 0){
-                        btnCambiarModo.setText("Cambiar a Abierto");
-                        btnComando.setText("ABRIR");
+                        btnCambiarModo.setText(R.string.CambiarAbierto);
+                        btnComando.setText(R.string.ABRIR);
+                        //btnComando.setBackgroundColor(R.drawable.comando_abrir);
+                        btnComando.setBackgroundResource(R.drawable.comando_abrir);
+                        btnComando.setTextColor(getColor(R.color.verde));
                     }
                     if(estado == 2){
-                        btnCambiarModo.setText("Cambiar a Cerrado");
-                        btnComando.setText("CERRAR");
+                        btnCambiarModo.setText(R.string.CambiarCerrado);
+                        btnComando.setText(R.string.CERRAR);
+                        //btnComando.setBackgroundColor(R.drawable.comando_cerrar);
+                        btnComando.setBackgroundResource(R.drawable.comando_cerrar);
+                        btnComando.setTextColor(getColor(R.color.rojo));
+                    }
+                    if(estado == 1){
+                        btnCambiarModo.setText(R.string.CambiarAbierto);
+                        btnComando.setText(R.string.ABRIENDO);
+                        //btnComando.setBackgroundColor(R.drawable.comando_abrir);
+                        btnComando.setBackgroundResource(R.drawable.comando_abrir);
+                        btnComando.setTextColor(getColor(android.R.color.holo_blue_dark));
+                    }
+                    if(estado == 3){
+                        btnCambiarModo.setText(R.string.CambiarCerrado);
+                        btnComando.setText(R.string.CERRANDO);
+                        //btnComando.setBackgroundColor(R.drawable.comando_cerrar);
+                        btnComando.setBackgroundResource(R.drawable.comando_cerrar);
+                        btnComando.setTextColor(getColor(android.R.color.holo_blue_dark));
                     }
                 }catch (Exception e){
                     Log.d("Mensaje",e.toString());

@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">SealtoPorton</string>
+    <string name="ABRIR">ABRIR</string>
+    <string name="ABRIENDO">ABRIENDO</string>
+    <string name="CERRANDO">CERRANDO</string>
+    <string name="CERRAR">CERRAR</string>
+    <string name="CambiarAbierto">Cambiar a Abierto</string>
+    <string name="CambiarCerrado">Cambiar a Cerrado</string>
+    <string name="PermisoHabilitado">El permiso esta Habilitado</string>
+    <string name="PermisoDeshabilitado">El permiso esta Deshabilitado</string>
+    <string name="bienvenido">Bienvenido...</string>
+    <string name="es_mi_porton">Es mi porton</string>
+    <string name="me_invitaron">Me invitaron</string>
+    <string name="agregar_permiso">Agregar Permiso</string>
+    <string name="gestion_de_permisos">Gestion de permisos</string>
+    <string name="cerrar_session">Cerrar session</string>
+    <string name="hola_ingresa_los_datos_del_permiso">Hola, ingresa los datos del permiso</string>
+    <string name="alias_del_permiso">ALIAS del permiso</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="id_del_dispositivo">ID del dispositivo</string>
+    <string name="contrase_a_del_dispositivo">Contraseña del dispositivo</string>
+    <string name="hola_ingresa_los_datos_del_permiso_que_deseas_crear">Hola, ingresa los datos del permiso que deseas crear</string>
+    <string name="contrase_a_del_permiso">Contraseña del permiso</string>
+    <string name="habilitado_actualmente">Habilitado actualmente</string>
+    <string name="crear">Crear</string>
+    <string name="estado">Estado</string>
+    <string name="eliminar">Eliminar</string>
 </resources>

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="Hola, ingresa los datos del dispositivo"
+        android:text="@string/hola_ingresa_los_datos_del_permiso"
         android:textColor="@color/black"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="104dp"
-        android:hint="ID del dispositivo"
+        android:hint="@string/id_del_dispositivo"
         android:singleLine="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/texto" />
@@ -35,7 +35,7 @@
         android:layout_marginTop="104dp"
         android:id="@+id/editPass"
         android:inputType="numberPassword"
-        android:hint="Contraseña del dispositivo"
+        android:hint="@string/contrase_a_del_dispositivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editID" />
@@ -46,7 +46,7 @@
         android:layout_marginTop="84dp"
         android:layout_marginEnd="24dp"
         android:id="@+id/btnIngresarPropietario"
-        android:text="Ingresar"
+        android:text="@string/ingresar"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPass" />

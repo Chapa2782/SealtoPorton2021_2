@@ -27,7 +27,7 @@ public class gestionPermisos extends AppCompatActivity {
     DatabaseReference  refPermisos,ref;
     FirebaseDatabase database;
     SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    String perString;
 
     ListView listado;
     PermisosAdapter adaptador;
@@ -39,12 +39,12 @@ public class gestionPermisos extends AppCompatActivity {
         setContentView(R.layout.activity_gestion_permisos);
 
         sharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
-
-
+        perString = sharedPreferences.getString("Dispositivo","");
 
         adaptador = new PermisosAdapter(getBaseContext(),new ArrayList<>());
         listado = findViewById(R.id.listadoPermisos);
         listado.setAdapter(adaptador);
+
 
         database = FirebaseDatabase.getInstance();
 
@@ -52,21 +52,19 @@ public class gestionPermisos extends AppCompatActivity {
         refPermisos.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Permisos permisos = dataSnapshot.getValue(Permisos.class);
+
                 try{
-                    Log.d("Mensaje",permisos.ID);
+                    PermisosClass permisos = dataSnapshot.getValue(PermisosClass.class);
                     //se comprueba que el permiso sea del usuario
-                    ref = database.getReference("Dispositivos/" + permisos.Dispositivo + "/Permisos/" + permisos.ID);
+                    String path = "Dispositivos/" + perString + "/Permisos/" + permisos.ID;
+                    ref = database.getReference(path);
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull  DataSnapshot snapshot) {
-                            if(dataSnapshot.getValue() == null){
-                                Log.d("Mensaje","Esta vacio");
+                            if(snapshot.getValue() == null){
                                 return;
                             }else{
-                                Log.d("Mensaje","Existe");
                                 try {
-                                    Log.d("Mensaje/Existe", snapshot.getValue().toString());
                                     adaptador.add(new Permisos(permisos.ID,permisos.habilitado));
                                 }catch (Exception e){
                                     Log.d("Mensaje",e.toString());
@@ -93,9 +91,12 @@ public class gestionPermisos extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                finish();
-                startActivity(getIntent());
-
+                try {
+                    adaptador.remove(adaptador.getItem(Permisos.postition));
+                    adaptador.notifyDataSetChanged();
+                }catch (Exception e){
+                    Log.d("Mensaje",e.toString());
+                }
             }
 
             @Override

@@ -45,6 +45,7 @@ public class InvitadoLogin extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Mensaje","Se esta presionando el boton");
                 ref = database.getReference("Permisos/" + editAlias.getText().toString().replace(" ","").toLowerCase());
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -52,10 +53,9 @@ public class InvitadoLogin extends AppCompatActivity {
                         try {
                             if (snapshot.getValue() == null) {
                                 editAlias.setError("El permiso no existe");
-                                Log.d("Mensaje", "El permiso no existe");
                                 return;
                             }
-                            Permisos permisos = snapshot.getValue(Permisos.class);
+                            PermisosClass permisos = snapshot.getValue(PermisosClass.class);
 
                             int clave = Integer.valueOf(editPass.getText().toString());
                             if (clave != permisos.Clave) {

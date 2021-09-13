@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SealtoPorton</string>
+    <string name="ABRIR">OPEN</string>
+    <string name="CERRAR">CLOSE</string>
+    <string name="CambiarAbierto">Change to opened</string>
+    <string name="CambiarCerrado">Change to Closeded</string>
+    <string name="PermisoHabilitado">Permission enabled</string>
+    <string name="PermisoDeshabilitado">Permission disabled</string>
+    <string name="bienvenido">Welcome...</string>
+    <string name="es_mi_porton">It´s my gate</string>
+    <string name="me_invitaron">I´m invited</string>
+    <string name="agregar_permiso">add permission</string>
+    <string name="gestion_de_permisos">permission management</string>
+    <string name="cerrar_session">close session</string>
+    <string name="hola_ingresa_los_datos_del_permiso">Hello, enter the permission details</string>
+    <string name="alias_del_permiso">ALIAS permission</string>
+    <string name="contrase_a_del_permiso">Pass permission</string>
+    <string name="ingresar">GO</string>
+    <string name="id_del_dispositivo">Device ID</string>
+    <string name="contrase_a_del_dispositivo">Pass ID</string>
+    <string name="hola_ingresa_los_datos_del_permiso_que_deseas_crear">Hello, enter the details of the permission you want to create</string>
+    <string name="habilitado_actualmente">Currently enabled</string>
+    <string name="crear">Create</string>
+    <string name="estado">State</string>
+    <string name="eliminar">Delete</string>
+    <string name="ABRIENDO">OPENING</string>
+    <string name="CERRANDO">CLOSEING</string>
+</resources>

@@ -3,5 +3,5 @@
 
     <item
         android:id="@+id/cerrarSession"
-        android:title="Cerrar Session" />
+        android:title="@string/cerrar_session" />
 </menu>

@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/agregarPermiso"
-        android:title="Agregar Permiso"/>
+        android:title="@string/agregar_permiso"/>
 
     <item android:id="@+id/gestionPermiso"
-        android:title="Gestion de permisos"/>
+        android:title="@string/gestion_de_permisos"/>
 
     <item android:id="@+id/cerrarSession"
-        android:title="Cerrar session"/>
+        android:title="@string/cerrar_session"/>
 </menu>

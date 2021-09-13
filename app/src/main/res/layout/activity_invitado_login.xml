@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="Hola, ingresa los datos del permiso"
+        android:text="@string/hola_ingresa_los_datos_del_permiso"
         android:textColor="@color/black"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="104dp"
         android:singleLine="true"
-        android:hint="ALIAS del permiso"
+        android:hint="@string/alias_del_permiso"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/texto" />
 
@@ -35,7 +35,7 @@
         android:layout_marginTop="104dp"
         android:id="@+id/editPass"
         android:singleLine="true"
-        android:hint="Contraseña del permiso"
+        android:hint="@string/contrase_a_del_permiso"
         android:inputType="numberPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +47,8 @@
         android:layout_marginTop="84dp"
         android:layout_marginEnd="24dp"
         android:id="@+id/btnIngresar"
-        android:text="Ingresar"
-        android:textSize="25dp"
+        android:text="@string/ingresar"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPass" />
 

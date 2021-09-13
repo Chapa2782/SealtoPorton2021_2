@@ -69,7 +69,7 @@ public class agregarPermiso extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.getValue() == null){
                             Log.d("Mensaje","Es nulo");
-                            Permisos permisos = new Permisos();
+                            PermisosClass permisos = new PermisosClass();
                             permisos.Clave = Integer.valueOf(editPass.getText().toString());
                             permisos.ID = editAlias.getText().toString().replace(" ","").toLowerCase();
                             permisos.Dispositivo = Dispo;
